@@ -1,11 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="theme-color" content="#C31E3C" />
+    <title>מועדון לקוחות שילב</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap');
+
+        :root {
+            --shilav-red: #C31E3C;
+            --shilav-opal: #A8BFBB;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Assistant', sans-serif;
+            margin: 0;
+            line-height: 25px;
+            box-sizing: border-box;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 48px;
+            color: var(--shilav-red);
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 32px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        p {
+            font-size: 19px;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            padding: 23px 28px;
+            border: solid 3px var(--shilav-opal);
+            outline: solid 1px white;
+            box-shadow: 0 0 0px 5px var(--shilav-opal);
+        }
+
+        .bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .logo-and-tagline {
+            margin-top: 15px;
+        }
+
+        @media screen and (max-width: 620px) {
+
+            h3 {
+                line-height: 35px;
+            }
+
+            .container {
+                border: none;
+                box-shadow: none;
+                outline: none;
+            }
+
+        }
+
+    </style>
 </head>
 <body>
-    
+    <main>
+        <div class="container">
+            <div class="top">
+                <img src="./bunny-holding-baloon.png" alt="ארנב מצויר מחזיק בלון">
+                <h2>תודה!</h2>
+            </div>
+            <div class="bottom">
+                <h3>הנתונים נקלטו בהצלחה</h3>
+                <p>ההטבה תשלח תוך 48 שעות<br>לכתובת הדוא״ל שהזנת</p>
+            </div>
+        </div>
+        <img class="logo-and-tagline" src="./logo+tagline.png" alt="לוגו וסלוגן שילב">
+    </main>
 </body>
 </html>

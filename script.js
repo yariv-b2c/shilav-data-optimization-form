@@ -80,7 +80,7 @@ formEl.addEventListener('submit', (e) => {
         overlayEl.classList.remove('hidden');
         fetch('https://dummyjson.com/products/1')
         .then(() => {
-            window.location.href = '/thank-you-page';
+            window.location.href = '/shilav-data-optimization-form/thank-you-page/';
         });
     }
 });

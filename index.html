@@ -1,11 +1,397 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="theme-color" content="#C11F3E" />
+    <title>מועדון לקוחות שילב</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap');
+
+        :root {
+            --shilav-red: #C31E3C;
+            --shilav-red-hover: #92172e;
+            --shilav-opal: #A8BFBB;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Assistant', sans-serif;
+            font-size: 19px;
+            margin: 0;
+            line-height: 25px;
+            box-sizing: border-box;
+        }
+
+        main {
+            position: relative;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 30px;
+            height: 100%;
+        }
+
+        input {
+            font-family: inherit;
+            font-size: inherit;
+            text-align: right;
+            border: none;
+            border-bottom: solid 2px var(--shilav-opal);
+            padding: 0 10px 5px;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        select {
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0 10px 5px;
+            border: none;
+            border-bottom: solid 2px var(--shilav-opal);
+            outline: none;
+            cursor: pointer;
+        }
+
+        input,
+        select {
+            flex: 1;
+        }
+
+        button,
+        input[type="submit"] {
+            width: 155px;
+            height: 40px;
+            font-family: inherit;
+            font-size: inherit;
+            text-align: center;
+            letter-spacing: 1px;
+            color: white;
+            background-color: var(--shilav-red);
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover,
+        input[type="submit"]:hover {
+            background-color: var(--shilav-red-hover);
+        }
+
+        input[type="submit"] {
+            align-self: flex-end;
+            flex: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .container {
+            display: flex;
+            min-height: 436px;
+            border: solid 3px var(--shilav-opal);
+            outline: solid 1px white;
+            box-shadow: 0 0 0px 5px var(--shilav-opal);
+        }
+        
+        .right {
+            padding: 30px 35px;
+        }
+        
+        .left {
+            position: relative;
+            width: 297px;
+            height: inherit;
+            background: linear-gradient(90deg, #8F867C 0%, #8F867C 13.02%, #91897E 27.08%, #958D82 49.16%, #958D82 74.75%, #958D82 100%);
+        }
+
+        .error-msg {
+            position: absolute;
+            bottom: -25px;
+            right: 10px;
+            color: var(--shilav-red);
+            font-size: 14px;
+            font-weight: 900;
+        }
+
+        .child-input-group.hidden {
+            visibility: hidden;
+            display: none;
+        }
+
+        .input-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .input-group,
+        .child-input-group {
+            display: flex;
+            gap: 30px;
+        }
+
+        .input-group.children {
+            flex-direction: column;
+        }
+
+        input[name="child-birthdate"] {
+            display: inline-block;
+            width: 236px;
+            flex: none;
+        }
+
+        input[name="estimated-birthdate"],
+        input[name="sender-birthday"] {
+            width: 250px;
+        }
+
+        select[name="form-sender"] {
+            width: 280px;
+        }
+
+        .logo-and-tagline {
+            width: 100px;
+            position: absolute;
+            top: 11%;
+            right: 50%;
+            transform: translate(50%, 0);
+        }
+
+        .baby-img {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .baby-img-horizontal {
+            width: 100%;
+            display: none;
+        }
+
+        .overlay {            
+            position: absolute;
+            inset: 0;
+        }
+
+        .overlay .background {
+            height: 100%;
+            width: 100%;
+            background-color: var(--shilav-opal);
+            opacity: .7;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            width: 90px;
+            height: 90px;
+            border: 20px solid white;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            animation: rotation 1s linear infinite;
+        }
+
+            @keyframes rotation {
+
+            0% {
+                transform: translate(50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(50%, -50%) rotate(360deg);
+            }
+
+        } 
+
+        @media screen and (max-width: 964px) {
+            .container {
+                flex-direction: column-reverse;
+            }
+
+            .left {
+                width: 100%;
+                
+            }
+
+            .baby-img {
+                display: none;
+            }
+
+            .baby-img-horizontal {
+                display: block;
+            }
+
+            .logo-and-tagline {
+                top: 50%;
+                right: 25%;
+                transform: translate(0, -50%);
+            }
+        }
+
+        @media screen and (max-width: 667px) {
+
+            body {
+                display: block;
+            }
+
+            main {
+                width: 100%;
+            }
+
+            .logo-and-tagline {
+                width: 20%;
+            }
+
+            .container {
+                border: none;
+                outline: none;
+                box-shadow: none;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            input[name="estimated-birthdate"],
+            input[name="sender-birthday"],
+            select[name="form-sender"] {
+                width: auto;
+            }
+
+            .child-input-group {
+                flex-wrap: wrap;
+            }
+
+            .child-name {
+                width: calc(75% - 50px);
+                flex: none;
+            }
+
+            .child-gender {
+                width: 25%;
+                flex: none;
+            }
+            
+            input[name="child-birthdate"] {
+                width: 100%;
+                flex: 1;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
-    
+    <main>
+        <div class="container">
+            <div class="right">
+                <form>
+                    <div class="input-group">
+                        <input type="text" placeholder="שם פרטי" required>
+                        <input type="text" placeholder="שם משפחה" required>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-container">
+                            <input name="email" type="email" placeholder="דוא״ל" required>
+                            <div class="error-msg email-error hidden">כתובת המייל אינה תקינה</div>
+                        </div>
+                        <div class="input-container">
+                            <input name="phone" type="text" placeholder="טלפון" required>
+                            <div class="error-msg phone-error hidden">מספר הטלפון אינו תקין</div>
+                        </div>
+                    </div>
+                    <select name="form-sender" required>
+                        <option value="" disabled selected>מי אני?</option>
+                        <option value="expecting-mother">אמא מצפה/הריונית</option>
+                        <option value="expecting-father">אבא מצפה</option>
+                        <option value="mother">אמא</option>
+                        <option value="father">אבא</option>
+                        <option value="grandmother">סבתא</option>
+                        <option value="grandfather">סבא</option>
+                        <option value="aunt">דודה</option>
+                        <option value="uncle">דוד</option>
+                        <option value="other">אחר</option>
+                    </select>
+                    <div class="input-group children">
+                        <div class="child-input-group">
+                            <input class="child-name" type="text" placeholder="שם הילד/ה" required>
+                            <select class="child-gender" required>
+                                <option value="" disabled selected>מין</option>
+                                <option value="male">זכר</option>
+                                <option value="female">נקבה</option>
+                            </select>
+                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה" required>
+                        </div> 
+                        <div class="child-input-group hidden">
+                            <input class="child-name" type="text" placeholder="שם הילד/ה">
+                            <select class="child-gender">
+                                <option value="" disabled selected>מין</option>
+                                <option value="male">זכר</option>
+                                <option value="female">נקבה</option>
+                            </select>
+                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה">
+                        </div> 
+                        <div class="child-input-group hidden">
+                            <input class="child-name" type="text" placeholder="שם הילד/ה">
+                            <select class="child-gender">
+                                <option value="" disabled selected>מין</option>
+                                <option value="male">זכר</option>
+                                <option value="female">נקבה</option>
+                            </select>
+                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה">
+                        </div> 
+                        <div class="child-input-group hidden">
+                            <input class="child-name" type="text" placeholder="שם הילד/ה">
+                            <select class="child-gender">
+                                <option value="" disabled selected>מין</option>
+                                <option value="male">זכר</option>
+                                <option value="female">נקבה</option>
+                            </select>
+                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה">
+                        </div> 
+                        <div class="child-input-group hidden">
+                            <input class="child-name" type="text" placeholder="שם הילד/ה">
+                            <select class="child-gender">
+                                <option value="" disabled selected>מין</option>
+                                <option value="male">זכר</option>
+                                <option value="female">נקבה</option>
+                            </select>
+                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה">
+                        </div> 
+                    </div>
+                    <button type="button" class="add-child-btn">+ ילדים נוספים?</button>
+                    <button type="button" class="pregnancy-btn">+ בהריון?</button>
+                    <input class="hidden" name="estimated-birthdate" type="text" placeholder="תאריך לידה משוער">
+                    <input name="sender-birthday" type="text" placeholder="יום ההולדת שלי" lang="he-IL" required>
+                    <input type="submit" value="שליחה">
+                </form>
+            </div>
+            <div class="left">
+                <img class="baby-img" src="./img/baby.png" alt="לוגו וסלוגן שילב" class="logo-and-slogan">
+                <img class="baby-img-horizontal" src="./img/baby-horizontal.png" alt="לוגו וסלוגן שילב" class="logo-and-slogan">
+                <img class="logo-and-tagline" src="./img/logo+tagline.png" alt="לוגו וסלוגן שילב" class="logo-and-slogan">
+            </div>
+        </div>
+        <div class="overlay hidden">
+            <div class="background"></div>
+            <span class="loader"></span>
+        </div>
+    </main>
+    <script src="./script.js"></script>
 </body>
+
 </html>

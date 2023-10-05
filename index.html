@@ -68,6 +68,32 @@
             flex: 1;
         }
 
+        input[type="date"] {
+            padding-top: 19px;
+            position: relative;
+        }
+
+        input[type="date"]:before {
+            content: "בחר/י תאריך";
+            position: absolute;
+            font-size: 14px;
+            font-weight: 900;
+            top: 0;
+            right: 10px;
+        }
+
+        input[name="child-birthdate"]:before {
+            content: "תאריך לידת הילד/ה";
+        }
+        
+        input[name="estimated-birthdate"]:before {
+            content: "תאריך לידה משוער";
+        }
+
+        input[name="sender-birthday"]:before {
+            content: "יום ההולדת שלי";
+        }
+
         button,
         input[type="submit"] {
             width: 155px;
@@ -270,32 +296,6 @@
             input,
             select {
                 min-width: 0;
-            }
-
-            input[type="date"] {
-                padding-top: 19px;
-                position: relative;
-            }
-
-            input[type="date"]:before {
-                content: "בחר/י תאריך";
-                position: absolute;
-                font-size: 14px;
-                font-weight: 900;
-                top: 0;
-                right: 10px;
-            }
-
-            input[name="child-birthdate"]:before {
-                content: "תאריך לידת הילד/ה";
-            }
-            
-            input[name="estimated-birthdate"]:before {
-                content: "תאריך לידה משוער";
-            }
-
-            input[name="sender-birthday"]:before {
-                content: "יום ההולדת שלי";
             }
 
             input[type="date"]:after {

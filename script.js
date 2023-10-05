@@ -50,7 +50,7 @@ function isFieldDataValid() {
 childBirthdateFieldEls.forEach(el => {
     el.max = new Date().toISOString().split("T")[0];
     el.addEventListener('focus', () => el.type = 'date');
-    el.addEventListener('click', () => el.setAttribute('data-format-placeholder', ""));
+    el.addEventListener('input', () => el.setAttribute('data-format-placeholder', ""));
 });
 
 senderBirthdayEl.max = new Date().toISOString().split("T")[0];

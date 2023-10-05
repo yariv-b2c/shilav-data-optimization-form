@@ -1,5 +1,7 @@
 const formEl = document.querySelector('form');
 
+const firstNameFieldEl = document.querySelector('input[name="first-name"]');
+const lastNameFieldEl = document.querySelector('input[name="last-name"]');
 const emailFieldEl = document.querySelector('input[name="email"]');
 const phoneFieldEl = document.querySelector('input[name="phone"]');
 const childBirthdateFieldEls = document.querySelectorAll('input[name="child-birthdate"]');
@@ -14,6 +16,17 @@ const emailErrorEl = document.querySelector('.email-error');
 const phoneErrorEl = document.querySelector('.phone-error');
 
 const overlayEl = document.querySelector('.overlay');
+
+function injectExisitingClientData() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramMap = [
+        {'el': firstNameFieldEl, paramVal: urlParams.get('First_Name')},
+        {'el': lastNameFieldEl, paramVal: urlParams.get('Last_Name')},
+        {'el': emailFieldEl, paramVal: urlParams.get('Email')},
+        {'el': phoneFieldEl, paramVal: urlParams.get('Mobile')},
+    ];
+    paramMap.forEach(item => item.el.value = item.paramVal);
+}
 
 // https://www.scaler.com/topics/email-validation-in-javascript/
 function isValidEmail(email) {
@@ -57,7 +70,6 @@ senderBirthdayEl.max = new Date().toISOString().split("T")[0];
 senderBirthdayEl.addEventListener('focus', () => senderBirthdayEl.type = 'date');
 senderBirthdayEl.addEventListener('input', () => senderBirthdayEl.setAttribute('data-format-placeholder', ""));
 
-
 estimatedBirthdateFieldEl.min = new Date().toISOString().split("T")[0];
 estimatedBirthdateFieldEl.addEventListener('focus', () => estimatedBirthdateFieldEl.type = 'date');
 estimatedBirthdateFieldEl.addEventListener('input', () => estimatedBirthdateFieldEl.setAttribute('data-format-placeholder', ""));
@@ -95,3 +107,5 @@ phoneFieldEl.addEventListener('focus', () => {
     phoneFieldEl.classList.remove('input-error');
     phoneFieldEl.value = '';
 });
+
+document.addEventListener('DOMContentLoaded', () => injectExisitingClientData());

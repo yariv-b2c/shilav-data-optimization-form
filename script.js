@@ -59,17 +59,12 @@ estimatedBirthdateFieldEl.min = new Date().toISOString().split("T")[0];
 estimatedBirthdateFieldEl.addEventListener('focus', () => estimatedBirthdateFieldEl.type = 'date');
 
 addChildBtn.addEventListener('click', () => {
-
-    const childInputsArr = [...hiddenChildInputGroupEls[0].children]
-    childInputsArr.forEach(el => el.required = true);
-
     hiddenChildInputGroupEls[0].classList.remove('hidden');
     hiddenChildInputGroupEls = document.querySelectorAll(".child-input-group.hidden");
     hiddenChildInputGroupEls.length ? false : addChildBtn.remove();
 });
 
 pregnancyBtn.addEventListener('click', () => {
-    estimatedBirthdateFieldEl.required = true;
     estimatedBirthdateFieldEl.classList.remove('hidden');
     pregnancyBtn.remove();
 });

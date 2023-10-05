@@ -298,6 +298,10 @@
                 min-width: 0;
             }
 
+            input[type="date"] {
+                padding-top: 25px;
+            }
+
             input[type="date"]:after {
                 content: attr(data-format-placeholder);
                 position: absolute;
@@ -329,13 +333,15 @@
             }
 
             .child-gender {
-                width: 25%;
-                flex: none;
+                flex: 0.7;
+            }
+
+            .child-name {
+                flex: 1.3;
             }
             
             input[name="child-birthdate"] {
-                width: 100%;
-                flex: 1;
+                flex: 2.3;
             }
         }
 

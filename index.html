@@ -274,10 +274,10 @@
             }
 
             input[type="date"]:before {
-                font-size: 14px;
-                font-weight: 900;
                 content: "בחר/י תאריך";
                 position: absolute;
+                font-size: 14px;
+                font-weight: 900;
                 top: 0;
                 right: 10px;
             }
@@ -292,6 +292,21 @@
 
             input[name="sender-birthday"]:before {
                 content: "יום ההולדת שלי";
+            }
+
+            input[type="date"]:after {
+                content: attr(data-format-placeholder);
+                position: absolute;
+                bottom: 5px;
+                right: 30px;
+            }
+
+            input[name="estimated-birthdate"]:after,
+            input[name="sender-birthday"]:after {
+                content: attr(data-format-placeholder);
+                position: absolute;
+                bottom: 5px;
+                right: 30px;
             }
 
             input[name="estimated-birthdate"],
@@ -362,7 +377,7 @@
                                 <option value="male">זכר</option>
                                 <option value="female">נקבה</option>
                             </select>
-                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה">
+                            <input name="child-birthdate" type="text" data-format-placeholder="dd/mm/yyyy" placeholder="תאריך לידת הילד/ה">
                         </div> 
                         <div class="child-input-group hidden">
                             <input class="child-name" type="text" placeholder="שם הילד/ה">
@@ -371,7 +386,7 @@
                                 <option value="male">זכר</option>
                                 <option value="female">נקבה</option>
                             </select>
-                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה">
+                            <input name="child-birthdate" type="text" data-format-placeholder="dd/mm/yyyy" placeholder="תאריך לידת הילד/ה">
                         </div> 
                         <div class="child-input-group hidden">
                             <input class="child-name" type="text" placeholder="שם הילד/ה">
@@ -380,7 +395,7 @@
                                 <option value="male">זכר</option>
                                 <option value="female">נקבה</option>
                             </select>
-                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה">
+                            <input name="child-birthdate" type="text" data-format-placeholder="dd/mm/yyyy" placeholder="תאריך לידת הילד/ה">
                         </div> 
                         <div class="child-input-group hidden">
                             <input class="child-name" type="text" placeholder="שם הילד/ה">
@@ -389,7 +404,7 @@
                                 <option value="male">זכר</option>
                                 <option value="female">נקבה</option>
                             </select>
-                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה">
+                            <input name="child-birthdate" type="text" data-format-placeholder="dd/mm/yyyy" placeholder="תאריך לידת הילד/ה">
                         </div> 
                         <div class="child-input-group hidden">
                             <input class="child-name" type="text" placeholder="שם הילד/ה">
@@ -398,13 +413,13 @@
                                 <option value="male">זכר</option>
                                 <option value="female">נקבה</option>
                             </select>
-                            <input name="child-birthdate" type="text" placeholder="תאריך לידת הילד/ה">
+                            <input name="child-birthdate" type="text" data-format-placeholder="dd/mm/yyyy" placeholder="תאריך לידת הילד/ה">
                         </div> 
                     </div>
                     <button type="button" class="add-child-btn">+ ילדים נוספים?</button>
                     <button type="button" class="pregnancy-btn">+ בהריון?</button>
-                    <input class="hidden" name="estimated-birthdate" type="text" placeholder="תאריך לידה משוער">
-                    <input name="sender-birthday" type="text" placeholder="יום ההולדת שלי" lang="he-IL" required>
+                    <input class="hidden" name="estimated-birthdate" type="text" data-format-placeholder="dd/mm/yyyy" placeholder="תאריך לידה משוער">
+                    <input name="sender-birthday" type="text" data-format-placeholder="dd/mm/yyyy" placeholder="יום ההולדת שלי" lang="he-IL" required>
                     <input type="submit" value="שליחה">
                 </form>
             </div>

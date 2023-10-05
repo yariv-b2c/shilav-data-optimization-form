@@ -2,7 +2,7 @@ const formEl = document.querySelector('form');
 
 const emailFieldEl = document.querySelector('input[name="email"]');
 const phoneFieldEl = document.querySelector('input[name="phone"]');
-const childBirtdateFieldEls = document.querySelectorAll('input[name="child-birthdate"]');
+const childBirthdateFieldEls = document.querySelectorAll('input[name="child-birthdate"]');
 const senderBirthdayEl = document.querySelector('input[name="sender-birthday"]');
 let hiddenChildInputGroupEls = document.querySelectorAll('.child-input-group.hidden');
 const estimatedBirthdateFieldEl = document.querySelector('input[name="estimated-birthdate"]');
@@ -47,16 +47,20 @@ function isFieldDataValid() {
     return true;
 }
 
-childBirtdateFieldEls.forEach(el => {
+childBirthdateFieldEls.forEach(el => {
     el.max = new Date().toISOString().split("T")[0];
     el.addEventListener('focus', () => el.type = 'date');
+    el.addEventListener('click', () => el.setAttribute('data-format-placeholder', ""));
 });
 
 senderBirthdayEl.max = new Date().toISOString().split("T")[0];
 senderBirthdayEl.addEventListener('focus', () => senderBirthdayEl.type = 'date');
+senderBirthdayEl.addEventListener('click', () => senderBirthdayEl.setAttribute('data-format-placeholder', ""));
+
 
 estimatedBirthdateFieldEl.min = new Date().toISOString().split("T")[0];
 estimatedBirthdateFieldEl.addEventListener('focus', () => estimatedBirthdateFieldEl.type = 'date');
+estimatedBirthdateFieldEl.addEventListener('click', () => estimatedBirthdateFieldEl.setAttribute('data-format-placeholder', ""));
 
 addChildBtn.addEventListener('click', () => {
     hiddenChildInputGroupEls[0].classList.remove('hidden');

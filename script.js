@@ -55,12 +55,12 @@ childBirthdateFieldEls.forEach(el => {
 
 senderBirthdayEl.max = new Date().toISOString().split("T")[0];
 senderBirthdayEl.addEventListener('focus', () => senderBirthdayEl.type = 'date');
-senderBirthdayEl.addEventListener('click', () => senderBirthdayEl.setAttribute('data-format-placeholder', ""));
+senderBirthdayEl.addEventListener('input', () => senderBirthdayEl.setAttribute('data-format-placeholder', ""));
 
 
 estimatedBirthdateFieldEl.min = new Date().toISOString().split("T")[0];
 estimatedBirthdateFieldEl.addEventListener('focus', () => estimatedBirthdateFieldEl.type = 'date');
-estimatedBirthdateFieldEl.addEventListener('click', () => estimatedBirthdateFieldEl.setAttribute('data-format-placeholder', ""));
+estimatedBirthdateFieldEl.addEventListener('input', () => estimatedBirthdateFieldEl.setAttribute('data-format-placeholder', ""));
 
 addChildBtn.addEventListener('click', () => {
     hiddenChildInputGroupEls[0].classList.remove('hidden');
